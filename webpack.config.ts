@@ -5,6 +5,8 @@
  *
  * Browserslist documentation: https://github.com/browserslist/browserslist#browserslist-
  */
+import NodePolyfillPlugin from "node-polyfill-webpack-plugin";
+
 const useBabel = true;
 
 /**
@@ -163,8 +165,9 @@ const config: Configuration = {
 	plugins: [
 		new MiniCssExtractPlugin({
 			filename: '[name].css'
-		})
-	],
+		}),
+		new NodePolyfillPlugin()
+],
 	devtool: isProduction && !sourceMapsInProduction ? false : 'source-map',
 	stats: {
 		chunks: false,
